@@ -5,8 +5,8 @@ The interface is an extension of the [sisl](https://github.com/zerothi/sisl) vis
 How to install it
 ----
 
-You can run the install.sh script (`sh install.sh`), or you can follow this guide to install it step by step and understand what are the requirements.
- 
+You can run the install.sh script (`. install.sh`), or you can follow this guide to install it step by step and understand what are the requirements.
+
 ### Package requirements
 
 There are some packages that need to be installed before installing sisl.
@@ -45,4 +45,46 @@ Install nodejs and the node package manager (required for the GUI backend)
 
 Install the serve package to serve the GUI
 `sudo npm install -g serve`
+
+How to run it
+---
+
+To start producing and managing plots, you need to serve the user interface. 
+
+From the sisl-GUI folder: `serve -s build`
+
+Or more generally: `serve -s /path/to/the/build/folder`
+
+And then run the API (inside the virtual environment that you created!):
+
+From the sisl-GUI folder: `python api/app.py`
+
+Or more generally: `serve -s /path/to/app.py`
+
+The API is the one that looks for files in your filesystem, so it is better to run it from the folder where you have your structures.
+
+Helpful aliases to do things fast
+---
+
+Additionally, here are some useful aliases you can add to your .bash_aliases file (edit for example with `vi ~/.bash_aliases`). If you add this aliases, you will be able to launch the graphical interface from any folder using just one command.
+
+To easily activate your environment:
+
+`alias sislenv="source ~/.venvs/sislGUI/bin/activate"` or `alias sislenv="source /path/to/venv/bin/activate"`
+
+To run only the GUI: 
+
+`alias gui="serve -s /path/to/the/build/folder"`
+
+To run only the API:
+
+`alias api="sislenv; python /path/to/app.py; deactivate"`
+
+To run both (you will usually use this to launch the GUI):
+
+`alias sislGUI="gui > /dev/null & api && fg"`
+
+
+
+
 
