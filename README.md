@@ -58,19 +58,19 @@ Install the serve package to serve the GUI:
 How to run it
 ---
 
-To start producing and managing plots, you need to serve the user interface. 
+#### To start producing and managing plots, you need to serve the user interface. 
 
 From the sisl-GUI folder: `serve -s build`
 
 Or more generally: `serve -s /path/to/the/build/folder`
 
-And then run the API (inside the virtual environment that you created!):
+#### And then run the API (inside the virtual environment that you created!):
 
 From the sisl-GUI folder: `python api/app.py`
 
 Or more generally: `serve -s /path/to/app.py`
 
-The API is the one that looks for files in your filesystem, so it is better to run it from the folder where you have your structures.
+The API is the one that looks for files in your filesystem, so it is better to run it from the folder where you have your structures and results.
 
 Helpful aliases to do things fast
 ---
