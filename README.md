@@ -38,6 +38,7 @@ Once inside your environment, install all the python packages required
 Installing sisl:
 
 `pip install git+https://github.com/pfebrer96/sisl.git`
+
 `pip install tqdm plotly pandas pathos`
 
 Installing flask, for the python api that the GUI uses:
