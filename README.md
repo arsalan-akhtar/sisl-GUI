@@ -15,8 +15,6 @@ There are some packages that need to be installed before installing sisl.
 
 `sudo apt-get install gcc gfortran python3-dev python3-pip git`
 
-`sudo apt-get install git`
-
 ### Virtual environment
 
 The best way to install all the python packages needed is to create a virtual environment.
