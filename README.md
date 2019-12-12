@@ -103,7 +103,7 @@ Or if you want to automatically open the browser:
 
 #### To run both (you will usually use this to launch the GUI):
 
-`alias sislGUI="gui & api"`
+`alias sislGUI="gui & api && fg"`
 
 
 
