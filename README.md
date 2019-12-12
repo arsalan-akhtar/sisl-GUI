@@ -53,6 +53,14 @@ Install the serve package to serve the GUI:
 
 `sudo npm install -g serve`
 
+**If you can not run `npm install` as sudo**, you can make npm install packages in a folder at your home:
+
+`npm install --prefix=$HOME/node -g serve`
+
+And then add the bin to your .bashrc file:
+
+`echo 'export PATH=$PATH':$HOME/node/bin >> ~/.bashrc`
+
 How to run it
 ---
 
@@ -75,21 +83,27 @@ Helpful aliases to do things fast
 
 Additionally, here are some useful aliases you can add to your .bash_aliases file (edit for example with `vi ~/.bash_aliases`). If you add this aliases, you will be able to launch the graphical interface from any folder using just one command.
 
-To easily activate your environment:
+#### To easily activate your environment:
 
-`alias sislenv="source ~/.venvs/sislGUI/bin/activate"` or `alias sislenv="source /path/to/venv/bin/activate"`
+`alias sislenv="source ~/.venvs/sislGUI/bin/activate"` or more generally `alias sislenv="source /path/to/venv/bin/activate"`
 
-To run only the GUI: 
+#### To run only the GUI: 
 
 `alias gui="serve -s /path/to/the/build/folder"`
 
-To run only the API:
+Or if you want to automatically open the browser: 
+
+`alias gui="sensible-browser http://localhost:5000 >/dev/null 2>&1 & serve -s /path/to/the/build/folder`
+
+**Note:** This opens the browser on localhost:5000, which is the default port for *serve*. However, serve may be using another port if localhost:5000 is busy. In that case, you would need to change the address that the browser is opening. You can very easily know where serve is launching the GUI because a green rectangle appears in the terminal with the info. You can always ctrl + click the link to open the browser.
+
+#### To run only the API:
 
 `alias api="sislenv; python /path/to/api.py; deactivate"`
 
-To run both (you will usually use this to launch the GUI):
+#### To run both (you will usually use this to launch the GUI):
 
-`alias sislGUI="gui > /dev/null & api && fg"`
+`alias sislGUI="gui & api"`
 
 
 
