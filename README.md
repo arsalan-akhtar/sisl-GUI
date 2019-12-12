@@ -64,9 +64,9 @@ Or more generally: `serve -s /path/to/the/build/folder`
 
 #### And then run the API (inside the virtual environment that you created!):
 
-From the sisl-GUI folder: `python api/app.py`
+From the sisl-GUI folder: `python api.py`
 
-Or more generally: `serve -s /path/to/app.py`
+Or more generally: `python /path/to/api.py`
 
 The API is the one that looks for files in your filesystem, so it is better to run it from the folder where you have your structures and results.
 
@@ -85,7 +85,7 @@ To run only the GUI:
 
 To run only the API:
 
-`alias api="sislenv; python /path/to/app.py; deactivate"`
+`alias api="sislenv; python /path/to/api.py; deactivate"`
 
 To run both (you will usually use this to launch the GUI):
 
