@@ -47,7 +47,9 @@ Installing flask, for the python api that the GUI uses:
 
 Install nodejs and the node package manager (required for the GUI backend):
 
-`sudo apt-get install nodejs npm`
+`curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -`
+
+`sudo apt-get install -y nodejs`
 
 Install the serve package to serve the GUI:
 
