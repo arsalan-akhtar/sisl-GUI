@@ -37,7 +37,7 @@ Installing sisl:
 
 `pip install git+https://github.com/pfebrer96/sisl.git`
 
-`pip install tqdm plotly pandas pathos`
+`pip install tqdm plotly pandas pathos xarray`
 
 Installing flask, for the python api that the GUI uses:
 

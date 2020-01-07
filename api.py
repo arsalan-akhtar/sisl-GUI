@@ -291,4 +291,4 @@ api.add_resource(StructsHandler, '/sislGUI/structs')
 api.add_resource(TabManager, '/sislGUI/tab', '/sislGUI/tab/<string:tabID>' )
 api.add_resource(PlotManager, '/sislGUI/plot','/sislGUI/plot/<string:plotID>')
 
-app.run(debug=True) #host = "192.168.0.103"
+app.run(debug=True, port=3000) #host = "192.168.0.103"
