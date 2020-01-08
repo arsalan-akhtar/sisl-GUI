@@ -1,10 +1,11 @@
 import os
+import traceback
 
 from flask import Flask, request, jsonify, make_response
 from flask_restplus import Api, Resource, fields
 from flask_cors import CORS
 
-from sisl.viz import Session
+from sisl.viz import BasicSession
 from sisl.viz.plotutils import load
 
 app = Flask(__name__)
@@ -17,9 +18,10 @@ api = Api(app = app,
 		  title = "Sisl GUI", 
 		  description = "Interact with your simulations results with the help of a graphical interface")
 
-session = Session()
+session = BasicSession()
 
 class SessionManager(Resource):
+	
 	def get(self):
 		try: 
 
@@ -30,7 +32,7 @@ class SessionManager(Resource):
 			})
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -69,7 +71,7 @@ class SessionManager(Resource):
 
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -90,7 +92,7 @@ class PlotTypes(Resource):
 			})
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -116,7 +118,7 @@ class PlotManager(Resource):
 
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -157,7 +159,7 @@ class PlotManager(Resource):
 
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -182,7 +184,7 @@ class PlotManager(Resource):
 
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -203,7 +205,7 @@ class StructsHandler(Resource):
 
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -229,7 +231,7 @@ class TabManager(Resource):
 
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -252,7 +254,7 @@ class TabManager(Resource):
 
 			return response
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -278,7 +280,7 @@ class TabManager(Resource):
 			return response
 
 		except Exception as error:
-			print(error)
+			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
 				"status": "Could not make prediction",
@@ -291,4 +293,4 @@ api.add_resource(StructsHandler, '/sislGUI/structs')
 api.add_resource(TabManager, '/sislGUI/tab', '/sislGUI/tab/<string:tabID>' )
 api.add_resource(PlotManager, '/sislGUI/plot','/sislGUI/plot/<string:plotID>')
 
-app.run(debug=True) #host = "192.168.0.103"
+app.run(debug=True, port = 4000) #host = "192.168.0.103"
