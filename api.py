@@ -1,6 +1,10 @@
 import os
 import traceback
 
+import plotly
+import numpy as np
+
+from flask.json import JSONEncoder
 from flask import Flask, request, jsonify, make_response
 from flask_restplus import Api, Resource, fields
 from flask_cors import CORS
@@ -9,6 +13,23 @@ from sisl.viz import BasicSession
 from sisl.viz.plotutils import load
 
 app = Flask(__name__)
+
+class CustomJSONEncoder(JSONEncoder):
+
+	def default(self, obj):
+
+		if hasattr(obj, "to_json"):
+			return obj.to_json()
+		elif isinstance(obj, np.generic): 
+			return obj.item() 
+
+		try:
+			return plotly.utils.PlotlyJSONEncoder.default(self, obj)
+		except Exception:
+			return JSONEncoder.default(self, obj)
+
+app = Flask(__name__)
+app.json_encoder = CustomJSONEncoder
 
 #This is so that the GUI's javascript doesn't complain about permissions
 CORS(app)
@@ -74,7 +95,7 @@ class SessionManager(Resource):
 			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
-				"status": "Could not make prediction",
+				"status": "Could not make perform operation on the current session",
 				"error": str(error)
 			})
 
@@ -95,7 +116,7 @@ class PlotTypes(Resource):
 			print(traceback.format_exc())
 			return jsonify({
 				"statusCode": 500,
-				"status": "Could not make prediction",
+				"status": "Could not find plot types",
 				"error": str(error)
 			})
 	
@@ -149,7 +170,7 @@ class PlotManager(Resource):
 				#Get a new plot following the request parameters
 				requestBody = request.json
 
-				plot = session.newPlot( requestBody["plotClass"], tabID = requestBody["tabID"] , structID = requestBody["struct"])
+				plot = session.newPlot( requestBody["plotClass"], tabID = requestBody["tabID"] , structID = requestBody["struct"], animation = requestBody["animation"])
 
 			response = jsonify({
 				"statusCode": 200,
