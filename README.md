@@ -56,7 +56,7 @@ Easy, just run the `sislGUI` file that you will find in the folder. You can run 
 path/to/sislGUI/executable
 `
 
-*Disclaimer*:You might need to make the file executable first:
+*Disclaimer:*You might need to make the file executable first.
 
 `
 chmod +x path/to/sislGUI/executable
