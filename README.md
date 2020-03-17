@@ -15,11 +15,18 @@ The best way to install all the python packages needed is to create a virtual en
 In this way, it won't affect any of the other python installations in your computer.
 Furthermore, you will be able to remove the virtual environment by just removing the folder and your system won't be affected.
 
-`sudo apt-get install python3-venv && python3 -m venv ~/.venvs/sislGUI`
+`sudo apt-get install python3-venv && python3 -m venv <path/to/your/venv>`
 
 Then, to enter your virtual environment:
 
-`source ~/.venvs/sislGUI/bin/activate`
+`source <path/to/your/venv>/bin/activate`
+
+If you plan to use the environment in jupyter notebooks (highly recommended), you need to execute these lines once you are in your virtual environment:
+
+```
+pip install jupyter ipykernel
+python -m ipykernel install --user --name=<the name of your environment>
+```
 
 #### Installing sisl
 
