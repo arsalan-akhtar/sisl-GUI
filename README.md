@@ -7,7 +7,7 @@ How to install it
 
 ### If you don't have sisl installed
 
-Install sisl in a virtual environment
+Install sisl in a virtual environment by following this instructions:
 
 #### Building a virtual environment
 
