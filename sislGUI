@@ -1,0 +1,5 @@
+SISLGUI_ROOT="./"
+
+trap 'kill %1' SIGINT
+python "$SISL_GUI_ROOT"api.py & python "$SISL_GUI_ROOT"server.py
+trap - SIGINT
