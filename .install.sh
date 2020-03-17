@@ -1,3 +1,6 @@
+# DON'T USEEEEE PLEASE
+# IT DOESN'T WORK RN
+
 sudo apt-get update
 sudo apt-get install gcc gfortran python3-dev python3-pip
 sudo apt-get install git
@@ -20,14 +23,3 @@ pip install tqdm plotly pandas pathos
 #Flask (for the api)
 pip install flask flask-restplus flask-cors
 
-
-#-------------------------------------------
-#    Install the graphical interface
-#-------------------------------------------
-
-#Install nodejs
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-#Install the serve package to serve the GUI
-sudo npm install -g serve

@@ -5,15 +5,9 @@ The interface is an extension of the [sisl](https://github.com/zerothi/sisl) vis
 How to install it
 ----
 
-You can run the install.sh script (`. install.sh`), or you can follow this guide to install it step by step and understand what are the requirements.
+## If you don't have sisl installed
 
-### Package requirements
-
-There are some packages that need to be installed before installing sisl.
-
-`sudo apt-get update`
-
-`sudo apt-get install gcc gfortran python3-dev python3-pip git`
+Install sisl in a virtual environment
 
 ### Virtual environment
 
@@ -29,83 +23,46 @@ Then, to enter your virtual environment:
 
 ### Python packages
 
-Once inside your environment, install all the python packages required
-
-`pip install wheel`
-
 Installing sisl:
 
-`pip install git+https://github.com/pfebrer96/sisl.git`
+At the current moment, the sisl GUI implementation is still under developement. To keep up with changes, we recommend that you clone the repository and then install sisl from that folder in developement mode, like so:
 
-`pip install tqdm plotly pandas pathos xarray`
+```
+git clone -b GUI https://github.com/pfebrer96/sisl.git
+cd sisl
+pip install -e .
+```
 
-Installing flask, for the python api that the GUI uses:
+## After installing sisl
+
+###  Install GUI dependencies
+
+Inside the environment, install the additional dependencies that the interface has:
 
 `pip install flask flask-restplus flask-cors`
 
-###  Install the graphical interface
+###  Download the GUI
 
-Install nodejs and the node package manager (required for the GUI backend):
+Since the GUI itself is also under developement, we recommend you to clone the repository too, instead of downloading:
 
-`curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -`
-
-`sudo apt-get install -y nodejs`
-
-Install the serve package to serve the GUI:
-
-`sudo npm install -g serve`
-
-**If you can not run `npm install` as sudo**, you can make npm install packages in a folder at your home:
-
-`npm install --prefix=$HOME/node -g serve`
-
-And then add the bin to your .bashrc file:
-
-`echo 'export PATH=$PATH':$HOME/node/bin >> ~/.bashrc`
+`git clone https://github.com/pfebrer96/sisl-GUI.git`
 
 How to run it
 ---
 
-#### To start producing and managing plots, you need to serve the user interface. 
+Easy, just run the `sislGUI` file that you will find in the folder. You can run it from wherever you want, no need to be inside the directory.
 
-From the sisl-GUI folder: `serve -s build`
+`
+path/to/sislGUI/executable
+`
 
-Or more generally: `serve -s /path/to/the/build/folder`
+*Disclaimer*:You might need to make the file executable first:
 
-#### And then run the API (inside the virtual environment that you created!):
+`
+chmod +x path/to/sislGUI/executable
+`
 
-From the sisl-GUI folder: `python api.py`
-
-Or more generally: `python /path/to/api.py`
-
-The API is the one that looks for files in your filesystem, so it is better to run it from the folder where you have your structures and results.
-
-Helpful aliases to do things fast
----
-
-Additionally, here are some useful aliases you can add to your .bash_aliases file (edit for example with `vi ~/.bash_aliases`). If you add this aliases, you will be able to launch the graphical interface from any folder using just one command.
-
-#### To easily activate your environment:
-
-`alias sislenv="source ~/.venvs/sislGUI/bin/activate"` or more generally `alias sislenv="source /path/to/venv/bin/activate"`
-
-#### To run only the GUI: 
-
-`alias gui="serve -s /path/to/the/build/folder"`
-
-Or if you want to automatically open the browser: 
-
-`alias gui="sensible-browser http://localhost:5000 >/dev/null 2>&1 & serve -s /path/to/the/build/folder`
-
-**Note:** This opens the browser on localhost:5000, which is the default port for *serve*. However, serve may be using another port if localhost:5000 is busy. In that case, you would need to change the address that the browser is opening. You can very easily know where serve is launching the GUI because a green rectangle appears in the terminal with the info. You can always ctrl + click the link to open the browser.
-
-#### To run only the API:
-
-`alias api="sislenv; python /path/to/api.py; deactivate"`
-
-#### To run both (you will usually use this to launch the GUI):
-
-`alias sislGUI="gui & api && fg"`
+**Enjoy!**
 
 
 

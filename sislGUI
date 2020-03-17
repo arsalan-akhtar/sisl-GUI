@@ -1,5 +1,7 @@
-SISLGUI_ROOT="./"
+
+
+SISLGUI_ROOT=$(dirname "$0")
 
 trap 'kill %1' SIGINT
-python "$SISL_GUI_ROOT"api.py & python "$SISL_GUI_ROOT"server.py
+python "$SISLGUI_ROOT"/api.py & python "$SISLGUI_ROOT"/server.py
 trap - SIGINT
