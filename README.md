@@ -1,6 +1,6 @@
 This is the release page of the sisl graphical interface.
 
-The interface is an extension of the [sisl visualization module](https://github.com/pfebrer96/sisl/tree/GUI).
+The interface is an extension of the [sisl visualization module](https://github.com/pfebrer96/sisl/tree/GUI/sisl/viz).
 
 How to install it
 ----
