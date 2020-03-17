@@ -17,8 +17,12 @@ def serve(path):
 
 if True:
     import webbrowser
+    import time
 
     host = "0.0.0.0"
     port = 7001
+
+    #Wait for the api
+    time.sleep(1)
     webbrowser.open(f'http://{host}:{port}', new=2)
     app.run(host=host, use_reloader=True, port=port, threaded=True)
