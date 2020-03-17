@@ -15,7 +15,10 @@ The best way to install all the python packages needed is to create a virtual en
 In this way, it won't affect any of the other python installations in your computer.
 Furthermore, you will be able to remove the virtual environment by just removing the folder and your system won't be affected.
 
-`sudo apt-get install python3-venv && python3 -m venv <path/to/your/venv>`
+```
+pip3 install virtualenv
+python3 -m venv <path/to/your/venv>
+```
 
 Then, to enter your virtual environment:
 
