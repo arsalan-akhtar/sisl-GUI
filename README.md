@@ -45,7 +45,7 @@ pip install -e .
 
 #### Install GUI dependencies
 
-Inside the environment, install the additional dependencies that the interface has:
+Inside your sisl environment, install the additional dependencies that the interface has:
 
 `pip install flask flask-restplus flask-cors`
 
