@@ -50,7 +50,7 @@ Since the GUI itself is also under developement, we recommend you to clone the r
 How to run it
 ---
 
-Easy, just run the `sislGUI` file that you will find in the folder. You can run it from wherever you want, no need to be inside the directory.
+Easy, just run the `sislGUI` file that you will find inside the folder. You can run it from wherever you want, no need to be inside the directory.
 
 `
 path/to/sislGUI/executable

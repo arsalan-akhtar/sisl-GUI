@@ -12,6 +12,8 @@ from flask_cors import CORS
 from sisl.viz import BlankSession
 from sisl.viz.plotutils import load
 
+app = Flask(__name__)
+
 class CustomJSONEncoder(JSONEncoder):
 
 	def default(self, obj):
@@ -26,7 +28,7 @@ class CustomJSONEncoder(JSONEncoder):
 		except Exception:
 			return JSONEncoder.default(self, obj)
 
-app = Flask("SISL GUI Api")
+app = Flask(__name__)
 app.json_encoder = CustomJSONEncoder
 
 #This is so that the GUI's javascript doesn't complain about permissions
@@ -34,7 +36,7 @@ CORS(app)
 
 api = Api(app = app, 
 		  version = "1.0", 
-		  title = "Sisl GUI Api", 
+		  title = "Sisl GUI", 
 		  description = "Interact with your simulations results with the help of a graphical interface")
 
 session = BlankSession()

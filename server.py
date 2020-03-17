@@ -1,7 +1,9 @@
 import os
 from flask import Flask, send_from_directory
 
-app = Flask("SISL GUI", static_folder='build')
+scriptDir = os.path.dirname(os.path.realpath(__file__))
+
+app = Flask("SISL GUI", static_folder=os.path.join(scriptDir, 'build'))
 
 # Serve React App
 @app.route('/', defaults={'path': ''})
