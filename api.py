@@ -9,7 +9,7 @@ from flask import Flask, request, jsonify, make_response
 from flask_restplus import Api, Resource, fields
 from flask_cors import CORS
 
-from sisl.viz import BasicSession
+from sisl.viz import BlankSession
 from sisl.viz.plotutils import load
 
 app = Flask(__name__)
@@ -39,7 +39,7 @@ api = Api(app = app,
 		  title = "Sisl GUI", 
 		  description = "Interact with your simulations results with the help of a graphical interface")
 
-session = BasicSession()
+session = BlankSession()
 
 class SessionManager(Resource):
 	
@@ -67,6 +67,7 @@ class SessionManager(Resource):
 			global session
 
 			requestBody = request.json
+			additionalParams = {}
 
 			if requestBody["action"] == "updateSettings":
 				#Update this session's settings
@@ -83,11 +84,17 @@ class SessionManager(Resource):
 			elif requestBody["action"] == "load":
 				#Load a saved session
 				session = load( os.path.join(session.settings["rootDir"], requestBody["path"]) )
+			
+			elif requestBody["action"] == "updatePlots":
+				#Update this session's settings
+				additionalParams = {"justUpdated" : session.updates_available()}
+				session.commit_updates()
 
 			response = jsonify({
 				"statusCode": 200,
 				"status": "Options delivered",
-				"session": session._getJsonifiableInfo()
+				"session": session._getJsonifiableInfo(),
+				**additionalParams
 			})
 
 			return response
